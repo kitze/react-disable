@@ -15,7 +15,7 @@
 
 Just wrap any children with the `Disable` component in order to disable the section.
 
-```
+```jsx
 import { Disable } from 'react-disable';
 
 const App = () => {
