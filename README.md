@@ -1,8 +1,6 @@
 # 🙅‍♂️ react-disable
 
-### 🙋‍♂️ Made by [@thekitze](https://twitter.com/thekitze)
-
-### Other projects:
+### Other projects by [@thekitze](https://twitter.com/thekitze)
 
 - 💻 [Sizzy](https://sizzy.co) - A browser for developers and designers
 - 🏫 [React Academy](https://reactacademy.io) - Interactive React and GraphQL workshops
