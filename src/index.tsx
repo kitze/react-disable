@@ -3,30 +3,33 @@ import * as React from 'react';
 export const DisabledContext = React.createContext(false);
 
 export const Disable: React.FC<{
-  disabled: boolean;
   as?: string;
-  rest?: any;
-  disabledStyles?: any;
-  disabledOpacity?: number;
+  disabled: boolean;
   disabledProps?: any;
+  disabledStyles?: React.CSSProperties;
+  disabledOpacity?: number;
 }> = ({
-  children,
   as = 'div',
-  disabledOpacity = 0.3,
-  disabledStyles,
-  disabledProps,
+  children,
   disabled,
+  disabledProps,
+  disabledStyles,
+  disabledOpacity = 0.3,
   ...rest
 }) => {
-  const disableEvent = (e: any) => {
-    if (disabled) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-  };
-
   const isParentDisabled = React.useContext(DisabledContext);
   const shouldDisable = isParentDisabled ? false : disabled;
+  const disableEvent = React.useCallback(
+    (e: React.SyntheticEvent) => {
+      e.persist();
+
+      if (shouldDisable) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    },
+    [shouldDisable]
+  );
 
   return (
     <DisabledContext.Provider value={disabled}>
@@ -41,10 +44,13 @@ export const Disable: React.FC<{
               ...disabledStyles,
             }),
           },
-          ...(shouldDisable && { tabIndex: -1, ...disabledProps }),
-          onKeyDown: disableEvent,
           onClick: disableEvent,
-          disabled: shouldDisable,
+          onKeyDown: disableEvent,
+          ...(shouldDisable && {
+            tabIndex: -1,
+            'aria-hidden': 'true',
+            ...disabledProps,
+          }),
           ...rest,
         },
         children
