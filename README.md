@@ -9,11 +9,15 @@
 
 ---
 
+## Demo
+![demo](https://i.imgur.com/9D6Xeps.gif)
+
 ## Usage
 
 `yarn add react-disable`
 
 Just wrap any children with the `Disable` component in order to disable the section.
+The disabled sections are also aware if a parent is disabled, so they will be disabled, but the styles won't be duplicated (the opacity won't be multiplied, etc.)
 
 ```jsx
 import { Disable } from 'react-disable';
@@ -38,3 +42,5 @@ const App = () => {
   );
 };
 ```
+
+
