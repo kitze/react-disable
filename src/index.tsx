@@ -38,6 +38,7 @@ export const Disable: React.FC<{
             ...(shouldDisable && {
               opacity: disabledOpacity,
               pointerEvents: 'none',
+              userSelect: 'none',
               ...disabledStyles,
             }),
           },
