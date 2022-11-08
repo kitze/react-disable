@@ -8,6 +8,7 @@ export const Disable: React.FC<{
   disabledProps?: any;
   disabledStyles?: React.CSSProperties;
   disabledOpacity?: number;
+  children: React.ReactNode;
 }> = ({
   as = 'div',
   children,
